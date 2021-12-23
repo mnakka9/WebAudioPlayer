@@ -48,7 +48,7 @@ jQuery(document).ready(() => {
             audio.play();
             var time = audio.currentTime;
             var timeInString = getTime(time);
-            var li = `<li><button class="btn-light" value=${time} onclick="PlayBookMark(${time})">${timeInString}</button></li>`;
+            var li = `<li><button class="btn btn-info" value=${time} onclick="PlayBookMark(${time})"><span class="glyphicon glyphicon-bookmark"></span> ${timeInString}</button></li>`;
             var ul = document.getElementById("bookmarksul");
             $(ul).append(li);
         }

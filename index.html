@@ -10,12 +10,13 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script crossorigin="anonymous" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
+    <script crossorigin="anonymous" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src='main.js'></script>
 </head>
 
 <body>
     <div class="container">
-        <h3 class="display-4 mt-5 text-capitalize text-center text-info">Welcome to Web Audiobook player</h3>
+        <h3 class="display-4 mt-5 text-capitalize text-center text-info">Web Audiobook player</h3>
         <div class="card m-5">
             <div class="card-body">
                 <h3 class="card-title"> Rules: </h3>
@@ -32,46 +33,50 @@
         </div>
         <div class="m-5 row">
             <div class="col-8">
-            <div class="row m-1">
-                <input type="file" id="fileElem" style="display:none">
-                <a href="#" id="fileSelect">Select an Audiobook</a>
-            </div>
-            <div class="row m-1">
-                <div id="fileList">
-                    <p>No file selected!</p>
+                <div class="row m-1">
+                    <input type="file" accept=".m4b, .m4a, .mp3, .mp4" id="fileElem" style="display:none">
+                    <a href="#" id="fileSelect">Select an Audiobook</a>
+                </div>
+                <div class="row m-1">
+                    <div id="fileList">
+                        <p>No file selected!</p>
+                    </div>
+                </div>
+                <div class="row m-1">
+                    <audio class="col-sm-11" id="audioPlayer" controls="controls">
+                        <source id="audioSource" src="" type="audio/mpeg" />
+                    </audio>
+                </div>
+                <div class="row m-2">
+                    <div class="col-4"></div>
+                    <button id="AddBookmark" disabled class="btn-success col-4 align-content-center" value="">Add a
+                        bookmark</button>
                 </div>
             </div>
-            <div class="row m-1">
-                <audio class="col-sm-11" id="audioPlayer" controls="controls">
-                    <source id="audioSource" src="" type="audio/mpeg" />
-                </audio>
-            </div>
-            <div class="row m-2">
-                <div class="col-4"></div>
-                <button id="AddBookmark" disabled class="btn-primary col-4 align-content-center" value="">Add a
-                    bookmark</button>
-            </div>
-        </div>
             <div class="col">
-            <div id="Bookmarks">
-                <h3>Bookmarks</h3>
-                <ul id="bookmarksul">
-                </ul>
-                <br />
-            </div>
+                <div id="Bookmarks">
+                    <h3>Bookmarks</h3>
+                    <ul id="bookmarksul">
+                    </ul>
+                    <br />
+                </div>
 
+            </div>
+            <div class="row m-5">
+                <div class="col-6"></div>
+                <div class="col">
+                    <div class="container">
+                        <div class="row">
+                            <input class="btn-info col" type="button" id="btnExport" disabled
+                                onclick="exportBookmarks()" value="Export" />
+                            <input class="col" type="text" style="width:200px" disabled id="txtJson" />
+                            <input class="btn-info col" type="button" id="btnImport" disabled
+                                onclick="importBookmarks()" value="Import" />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row m-5">
-            <div class="col-6"></div>
-            <div class="col">
-                <div class="container">
-                <div class="row">
-            <input class="btn-link col" type="button" id="btnExport" disabled onclick="exportBookmarks()" value="Export" />
-            <input class="col" type="text" style="width:200px" disabled id="txtJson" />
-            <input class="btn-link col" type="button" id="btnImport" disabled onclick="importBookmarks()" value="Import" />
-        </div></div></div>
-        </div>
-    </div>
 </body>
 
 </html>
