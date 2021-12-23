@@ -1,7 +1,7 @@
 ul {
 	display: inline;
 }
-ul li {
+ul#bookmarksul li {
 	list-style: none;
 	display: inline-block;
     margin: 5px;
