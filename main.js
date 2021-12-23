@@ -96,7 +96,7 @@ jQuery(document).ready(() => {
                 bookmarks.forEach(time => {
                     time = parseFloat(time);
                     var timeInString = getTime(time);
-                    var li = `<li><button class="btn-light" value=${time} onclick="PlayBookMark(${time})">${timeInString}</button></li>`;
+                    var li = `<li><button class="btn btn-info" value=${time} onclick="PlayBookMark(${time})">${timeInString}</button></li>`;
                     var ul = document.getElementById("bookmarksul");
                     $(ul).append(li);
                 });
