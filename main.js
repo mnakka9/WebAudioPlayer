@@ -26,7 +26,7 @@ jQuery(document).ready(() => {
             const list = document.createElement("ul");
             fileList.appendChild(list);
             const li = document.createElement("li");
-            li.innerHTML = audioFile.name;
+            li.innerHTML = `<span class="text-sm text-light-blue-700">${audioFile.name}</span>`;
             list.appendChild(li);
             let audio = document.getElementById("audioPlayer");
             let source = document.getElementById('audioSource');

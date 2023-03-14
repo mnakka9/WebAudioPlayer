@@ -20,10 +20,10 @@
 
 <body>
     <div class="flex m-5 items-center justify-center">
-        <h1 class="text-4xl text-orange-700">Play audiobooks!</h1>
+        <h1 class="text-4xl text-deep-orange-700">Play audiobooks!</h1>
         <button data-ripple-light="true" data-tooltip-target="tooltip-animation"
-            class="middle ml-2 none center rounded-lg bg-gradient-to-tr from-pink-600 to-pink-400 px-1 py-1 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
-            <i class="material-icons">info</i>
+            class="rounded-lg">
+            <i class="ml-4 mt-2 bg-deep-orange-600 material-icons">info</i>
         </button>
         <div data-tooltip="tooltip-animation" data-tooltip-mount="opacity-100 scale-100"
             data-tooltip-unmount="opacity-0 scale-0 pointer-events-none"
@@ -111,12 +111,12 @@
                                 <div class="m-1">
                                     <input type="file" accept=".m4b, .m4a, .mp3, .mp4" id="fileElem"
                                         style="display:none">
-                                    <a class="m-1 text-blue-800 text-underline" href="#" id="fileSelect">Select a
+                                    <a class="m-1 text-blue-800 text-xl" href="#" id="fileSelect">Select a
                                         file!</a>
                                 </div>
                                 <div class="m-1">
                                     <div id="fileList">
-                                        <p class="text-pink-300 text-sm font-semibold">No file selected!</p>
+                                        <p class="text-light-blue-700 text-sm font-semibold">No file selected!</p>
                                     </div>
                                 </div>
                                 <div class="m-1 w-full">
@@ -146,7 +146,7 @@
                             </div>
                             <div class="m-2 flex items-center justify-center">
                                 <button id="btnExport" type="button" onclick="exportBookmarks()" disabled
-                                    class="middle none center rounded-lg bg-pink-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                    class="middle none center rounded-lg bg-deep-orange-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                     data-ripple-light="true">
                                     Export
                                 </button>
@@ -173,7 +173,7 @@
                             </div>
                             <div>
                                 <button onclick="importBookmarks()" disabled id="btnImport"
-                                    class="middle none center mr-4 rounded-lg bg-blue-600 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                    class="middle none center mr-4 rounded-lg bg-teal-800 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                     data-ripple-light="true">
                                     Import
                                 </button>
