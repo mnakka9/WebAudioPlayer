@@ -48,7 +48,7 @@ jQuery(document).ready(() => {
             audio.play();
             let time = audio.currentTime;
             let timeInString = getTime(time);
-            let li = `<li class="m-5 bg-green-300"><button type="button" class="rounded-full"
+            let li = `<li class="m-5 bg-green-300"><button type="button" class="rounded-full  text-green-500"
             data-ripple-light="true" value=${time} onclick="PlayBookMark(${time})"><span><i class="material-icons">bookmark</i></span> ${timeInString}</button></li>`;
             let ul = document.getElementById("bookmarksul");
             $(ul).append(li);
@@ -97,7 +97,7 @@ jQuery(document).ready(() => {
                 bookmarks.forEach(time => {
                     time = parseFloat(time);
                     let timeInString = getTime(time);
-                    let li = `<li class="m-5 bg-green-300"><button type="button" class="rounded-full"
+                    let li = `<li class="m-5 bg-green-300"><button type="button" class="rounded-full text-green-500"
                     data-ripple-light="true" value=${time} onclick="PlayBookMark(${time})"><span><i class="material-icons">bookmark</i></span> ${timeInString}</button></li>`;
                     let ul = document.getElementById("bookmarksul");
                     $(ul).append(li);
