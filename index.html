@@ -4,79 +4,189 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Web Audiobook Player</title>
+    <title>Web Audio Player</title>
+    <script crossorigin="anonymous" src="https://unpkg.com/@material-tailwind/html@latest/scripts/ripple.js"></script>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script crossorigin="anonymous" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
-    <script crossorigin="anonymous" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- Font Awesome Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
+    <link rel='stylesheet' type='text/css' media='screen' href='index.css'>
     <script src='main.js'></script>
 </head>
 
 <body>
-    <div class="container">
-        <h3 class="display-4 mt-5 text-capitalize text-center text-info">Web Audiobook player</h3>
-        <div class="card m-5">
-            <div class="card-body">
-                <h3 class="card-title"> Rules: </h3>
-                <div class="card-text">
-                    <ul>
-                        <li>Currently only supports, single m4b/m4a/mp3 file audiobooks</li>
-                        <li>On refresh everything resets</li>
-                        <li>Use export button to export booksmarks to a file</li>
-                        <li>Paste the downloaded json into text box and click import to import previosuly downloaded
-                            bookmarks</li>
+    <div class="flex m-5 items-center justify-center">
+        <h1 class="text-4xl text-orange-700">Play audiobooks!</h1>
+        <button data-ripple-light="true" data-tooltip-target="tooltip-animation"
+            class="middle none center rounded-lg bg-gradient-to-tr from-pink-600 to-pink-400 px-1 py-1 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none">
+            <i class="material-icons">info</i>
+        </button>
+        <div data-tooltip="tooltip-animation" data-tooltip-mount="opacity-100 scale-100"
+            data-tooltip-unmount="opacity-0 scale-0 pointer-events-none"
+            data-tooltip-transition="transition-all duration-200 origin-bottom"
+            class="absolute z-50 whitespace-normal break-words rounded-lg bg-black py-1.5 px-3 font-sans text-sm font-normal text-white focus:outline-none">
+            <div class="shadow-card flex flex-col rounded-xl bg-white bg-clip-border">
+                <div class="text-secondary flex-1 p-6">
+                    <a href="#">
+                        <h3>Rules</h3>
+                    </a>
+
+                    <ul class="mb-8 space-y-4 text-left text-gray-500 dark:text-gray-400">
+                        <li class="flex items-center space-x-3">
+                            <!-- Icon -->
+                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Only single audio file is supported!</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <!-- Icon -->
+                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span>On page refresh everything resets</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <!-- Icon -->
+                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Export: <span class="font-semibold text-gray-900 dark:text-white">Click on export
+                                    button to export bookmarks to a json file.</span></span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <!-- Icon -->
+                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Import: <span class="font-semibold text-gray-900 dark:text-white">To import simply
+                                    copy the json content downloaded and paste it into import box and click on
+                                    import</span></span>
+                        </li>
                     </ul>
+
                 </div>
             </div>
         </div>
-        <div class="m-5 row">
-            <div class="col-8">
-                <div class="row m-1">
-                    <input type="file" accept=".m4b, .m4a, .mp3, .mp4" id="fileElem" style="display:none">
-                    <a href="#" id="fileSelect">Select an Audiobook</a>
-                </div>
-                <div class="row m-1">
-                    <div id="fileList">
-                        <p>No file selected!</p>
-                    </div>
-                </div>
-                <div class="row m-1">
-                    <audio class="col-sm-11" id="audioPlayer" controls="controls">
-                        <source id="audioSource" src="" type="audio/mpeg" />
-                    </audio>
-                </div>
-                <div class="row m-2">
-                    <div class="col-4"></div>
-                    <button id="AddBookmark" disabled class="btn-success col-4 align-content-center" value="">Add a
-                        bookmark</button>
-                </div>
-            </div>
-            <div class="col">
-                <div id="Bookmarks">
-                    <h3>Bookmarks</h3>
-                    <ul id="bookmarksul">
-                    </ul>
-                    <br />
-                </div>
+    </div>
 
-            </div>
-            <div class="row m-5">
-                <div class="col-6"></div>
-                <div class="col">
-                    <div class="container">
-                        <div class="row">
-                            <input class="btn-info col" type="button" id="btnExport" disabled
-                                onclick="exportBookmarks()" value="Export" />
-                            <input class="col" type="text" style="width:200px" disabled id="txtJson" />
-                            <input class="btn-info col" type="button" id="btnImport" disabled
-                                onclick="importBookmarks()" value="Import" />
+    <div class="flex m-5 items-center justify-center">
+        <div class="w-2/3 m-5">
+            <div class="relative right-0">
+                <ul class="relative flex list-none flex-wrap rounded-xl bg-blue-gray-50/60 p-1" data-tabs="tabs"
+                    role="list">
+                    <li class="z-30 flex-auto text-center">
+                        <a class="text-slate-700 z-30 mb-0 flex w-full cursor-pointer items-center justify-center rounded-lg border-0 bg-inherit px-0 py-1 transition-all ease-in-out"
+                            data-tab-target="" active="" role="tab" aria-selected="true" aria-controls="app">
+                            <span class="ml-1">Player</span>
+                        </a>
+                    </li>
+                    <li class="z-30 flex-auto text-center">
+                        <a class="text-slate-700 z-30 mb-0 flex w-full cursor-pointer items-center justify-center rounded-lg border-0 bg-inherit px-0 py-1 transition-all ease-in-out"
+                            data-tab-target="" role="tab" aria-selected="false" aria-controls="message">
+                            <span class="ml-1">Import</span>
+                        </a>
+                    </li>
+                </ul>
+                <div data-tab-content="" class="p-5">
+                    <div class="block opacity-100" id="app" role="tabpanel">
+                        <div class="shadow-card flex flex-col rounded-xl bg-white bg-clip-border">
+                            <div class="text-secondary flex-1 p-6">
+                                <div class="m-1">
+                                    <input type="file" accept=".m4b, .m4a, .mp3, .mp4" id="fileElem"
+                                        style="display:none">
+                                    <a class="m-1 text-blue-800 text-underline" href="#" id="fileSelect">Select a
+                                        file!</a>
+                                </div>
+                                <div class="m-1">
+                                    <div id="fileList">
+                                        <p class="text-pink-300 text-sm font-semibold">No file selected!</p>
+                                    </div>
+                                </div>
+                                <div class="m-1 w-full">
+                                    <audio class="w-full" id="audioPlayer" controls="controls">
+                                        <source id="audioSource" src="" type="audio/mpeg" />
+                                    </audio>
+                                </div>
+                                <div class="m-1 flex items-center justify-center">
+
+                                    <button id="AddBookmark"
+                                        disabled
+                                        class="middle none center rounded-lg bg-pink-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                        data-ripple-light="true">
+                                        Bookmark
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shadow-card flex flex-col rounded-xl bg-white bg-clip-border">
+                            <div class="text-secondary flex-1 p-6">
+
+                                <h3 class="m-1 text-2xl text-blue-700">Bookmarks</h3>
+                                <div class="m-2" id="Bookmarks">
+                                    <ul id="bookmarksul" class="flex flex-wrap overflow-y-auto max-h-32">
+                                    </ul>
+                                    <br />
+                                </div>
+                            </div>
+                            <div class="m-5 flex items-center justify-center">
+                                <button id="btnExport"
+                                type="button"
+                                onclick="exportBookmarks()"
+                                disabled
+                                class="middle none center rounded-lg bg-pink-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                data-ripple-light="true">
+                                Export
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden opacity-0" id="message" role="tabpanel">
+                        <p
+                            class="block font-sans text-base font-light leading-relaxed text-inherit text-blue-gray-500 antialiased">
+                        <div class="w-96">
+                            <div class="relative w-full min-w-[200px]">
+                                <textarea disabled id="txtJson"
+                                    class="peer h-full min-h-[100px] w-full resize-none rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0 disabled:bg-blue-gray-50"
+                                    placeholder=" "></textarea>
+                                <label
+                                    class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-pink-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-pink-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+                                    Enter json contents here
+                                </label>
+                            </div>
+                        </div>
+                        </p>
+                        <div>
+                            <button onclick="importBookmarks()" disabled id="btnImport"
+                                class="middle none center mr-4 rounded-lg bg-blue-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                data-ripple-light="true">
+                                Import
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <script type="module" crossorigin="anonymous"
+        src="https://unpkg.com/@material-tailwind/html@latest/scripts/tooltip.js"></script>
+    <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/tabs.js"></script>
 </body>
 
 </html>

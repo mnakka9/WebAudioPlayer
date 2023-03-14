@@ -20,16 +20,16 @@ jQuery(document).ready(() => {
         if (!this.files.length) {
             fileList.innerHTML = "<p>No files selected!</p>";
         } else {
-            var audioFile = this.files[0];
-            var srcUrl = URL.createObjectURL(audioFile);
+            let audioFile = this.files[0];
+            let srcUrl = URL.createObjectURL(audioFile);
             fileList.innerHTML = "";
             const list = document.createElement("ul");
             fileList.appendChild(list);
             const li = document.createElement("li");
             li.innerHTML = audioFile.name;
             list.appendChild(li);
-            var audio = document.getElementById("audioPlayer");
-            var source = document.getElementById('audioSource');
+            let audio = document.getElementById("audioPlayer");
+            let source = document.getElementById('audioSource');
             source.src = srcUrl;
             audio.load();
             $("#AddBookmark").prop("disabled", "");
@@ -43,19 +43,20 @@ jQuery(document).ready(() => {
     }
 
     $("#AddBookmark").click(() => {
-        var audio = document.getElementById("audioPlayer");
+        let audio = document.getElementById("audioPlayer");
         if (audio) {
             audio.play();
-            var time = audio.currentTime;
-            var timeInString = getTime(time);
-            var li = `<li><button class="btn btn-info" value=${time} onclick="PlayBookMark(${time})"><span class="glyphicon glyphicon-bookmark"></span> ${timeInString}</button></li>`;
-            var ul = document.getElementById("bookmarksul");
+            let time = audio.currentTime;
+            let timeInString = getTime(time);
+            let li = `<li class="m-5 bg-green-300"><button type="button" class="rounded-full"
+            data-ripple-light="true" value=${time} onclick="PlayBookMark(${time})"><span><i class="material-icons">bookmark</i></span> ${timeInString}</button></li>`;
+            let ul = document.getElementById("bookmarksul");
             $(ul).append(li);
         }
     });
 
     window.PlayBookMark = function PlayBookMark(time) {
-        var audio = document.getElementById("audioPlayer");
+        let audio = document.getElementById("audioPlayer");
         if (audio) {
             audio.play();
             audio.currentTime = time;
@@ -71,7 +72,7 @@ jQuery(document).ready(() => {
     }
 
     window.exportBookmarks = function () {
-        var audio = document.getElementById("audioPlayer");
+        let audio = document.getElementById("audioPlayer");
         if (audio) {
             let bookmarksJson = [];
             $("#bookmarksul").find("li").each((index, element) => {
@@ -87,7 +88,7 @@ jQuery(document).ready(() => {
     }
 
     window.importBookmarks  = function importBookmarks() {
-        var audio = document.getElementById("audioPlayer");
+        let audio = document.getElementById("audioPlayer");
         if (audio) {
             let json = $("#txtJson").val();
             if (json) {
@@ -95,9 +96,10 @@ jQuery(document).ready(() => {
                 $("#bookmarksul").empty();
                 bookmarks.forEach(time => {
                     time = parseFloat(time);
-                    var timeInString = getTime(time);
-                    var li = `<li><button class="btn btn-info" value=${time} onclick="PlayBookMark(${time})">${timeInString}</button></li>`;
-                    var ul = document.getElementById("bookmarksul");
+                    let timeInString = getTime(time);
+                    let li = `<li class="m-5 bg-green-300"><button type="button" class="rounded-full"
+                    data-ripple-light="true" value=${time} onclick="PlayBookMark(${time})"><span><i class="material-icons">bookmark</i></span> ${timeInString}</button></li>`;
+                    let ul = document.getElementById("bookmarksul");
                     $(ul).append(li);
                 });
                 $("#txtJson").val('');

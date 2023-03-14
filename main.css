@@ -1,17 +1,3 @@
-ul {
-	display: inline;
-}
-
-ul li {
-    margin-left: 5px;
-}
-ul#bookmarksul li {
-	list-style: none;
-	display: inline-block;
-    margin: 5px;
-}
-
-div#Bookmarks {
-    max-height: 200px;
-    overflow-y: scroll;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
