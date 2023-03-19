@@ -685,6 +685,10 @@ video {
   width: 12rem;
 }
 
+.w-8 {
+  width: 2rem;
+}
+
 .min-w-\[200px\] {
   min-width: 200px;
 }
@@ -765,6 +769,10 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
+
+.justify-self-auto {
+  justify-self: auto;
 }
 
 .overflow-y-auto {
@@ -914,6 +922,11 @@ video {
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
+}
+
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
 }
 
 .text-left {
