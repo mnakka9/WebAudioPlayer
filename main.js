@@ -9,6 +9,8 @@ jQuery(document).ready(() => {
         buttonForward = document.getElementById("btnForward"),
         fileList = document.getElementById("fileList");
 
+        let isAudioFileLoaded = false;
+
     fileSelect.addEventListener("click", function (e) {
         if (fileElem) {
             fileElem.click();
@@ -20,17 +22,15 @@ jQuery(document).ready(() => {
 
     buttonRewind.addEventListener("click", function (e) {
         let audio = document.getElementById("audioPlayer");
-        if (audio) {
-            audio.play();
-            
+        if (audio && isAudioFileLoaded) {
+
             audio.currentTime = audio.currentTime > 30 ? audio.currentTime - 30 : 0;
         }
     }, false);
 
     buttonForward.addEventListener("click", function (e) {
         let audio = document.getElementById("audioPlayer");
-        if (audio) {
-            audio.play();
+        if (audio && isAudioFileLoaded) {
             
             audio.currentTime = audio.currentTime > 0 ? audio.currentTime + 30 : 30;
         }
@@ -39,6 +39,7 @@ jQuery(document).ready(() => {
     function handleFiles() {
         if (!this.files.length) {
             fileList.innerHTML = "<p>No files selected!</p>";
+            isAudioFileLoaded = false;
         } else {
             let audioFile = this.files[0];
             let srcUrl = URL.createObjectURL(audioFile);
@@ -55,6 +56,7 @@ jQuery(document).ready(() => {
             $("#AddBookmark").prop("disabled", "");
             audio.play();
             URL.revokeObjectURL(audioFile);
+            isAudioFileLoaded = true;
             $("#bookmarksul").empty();
             $("#btnExport").prop("disabled", "");
             $("#txtJson").prop("disabled", "");
@@ -66,7 +68,7 @@ jQuery(document).ready(() => {
 
     $("#AddBookmark").click(() => {
         let audio = document.getElementById("audioPlayer");
-        if (audio) {
+        if (audio && isAudioFileLoaded) {
             audio.play();
             let time = audio.currentTime;
             let timeInString = getTime(time);
@@ -79,7 +81,7 @@ jQuery(document).ready(() => {
 
     window.PlayBookMark = function PlayBookMark(time) {
         let audio = document.getElementById("audioPlayer");
-        if (audio) {
+        if (audio && isAudioFileLoaded) {
             audio.play();
             audio.currentTime = time;
         }
@@ -111,7 +113,7 @@ jQuery(document).ready(() => {
 
     window.importBookmarks  = function importBookmarks() {
         let audio = document.getElementById("audioPlayer");
-        if (audio) {
+        if (audio && isAudioFileLoaded) {
             let json = $("#txtJson").val();
             if (json) {
                 let bookmarks = JSON.parse(json);
