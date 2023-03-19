@@ -87,7 +87,7 @@
     </div>
 
     <div class="flex m-5 items-center justify-center">
-        <div class="w-2/3 m-5">
+        <div class="w-full m-5">
             <div class="relative right-0">
                 <ul class="relative flex list-none flex-wrap rounded-xl bg-blue-gray-50/60 p-1" data-tabs="tabs"
                     role="list">
@@ -106,15 +106,15 @@
                 </ul>
                 <div data-tab-content="" class="p-5">
                     <div class="block opacity-100" id="app" role="tabpanel">
-                        <div class="m-3 shadow-card flex flex-col rounded-xl bg-gray-100 bg-clip-border">
+                        <div class="m-3 shadow-card flex flex-col rounded-xl bg-gray-100 bg-clip-border h-min-[200px]">
                             <div class="text-secondary flex-1 p-6">
                                 <div class="m-1">
                                     <input type="file" accept=".m4b, .m4a, .mp3, .mp4" id="fileElem"
                                         style="display:none">
-                                    <a class="m-1 text-blue-800 text-xl" href="#" id="fileSelect">Select a
+                                    <a class="m-1 text-blue-800 text-2xl underline font-bold" href="#" id="fileSelect">Select a
                                         file!</a>
                                 </div>
-                                <div class="m-1">
+                                <div class="m-2">
                                     <div id="fileList">
                                         <p class="text-light-blue-700 text-sm font-semibold">No file selected!</p>
                                     </div>
@@ -124,13 +124,23 @@
                                         <source id="audioSource" src="" type="audio/mpeg" />
                                     </audio>
                                 </div>
-                                <div class="m-1 flex items-center justify-center">
+                                <div class="m-1 flex flex-row items-center justify-center">
 
+                                    <button id="btnRewind" disabled
+                                    class="mr-5 h-8 w-24 middle none center rounded-lg bg-teal-500 py-1 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                    data-ripple-light="true">
+                                    <i class="material-icons">replay_30</i>
+                                </button>
                                     <button id="AddBookmark" disabled
-                                        class="middle none center rounded-lg bg-green-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                        class="w-64 h-8.5 middle none center rounded-lg bg-green-600 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                         data-ripple-light="true">
                                         Bookmark
                                     </button>
+                                    <button id="btnForward" disabled
+                                    class="ml-5 h-8 w-24 middle none center rounded-lg bg-teal-500 py-1 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                    data-ripple-light="true">
+                                    <i class="material-icons">forward_30</i>
+                                </button>
                                 </div>
                             </div>
                         </div>
@@ -155,10 +165,8 @@
                     </div>
                     <div class="hidden opacity-0" id="message" role="tabpanel">
                         <div class="flex flex-col items-center justify-center">
-                            <div>
-                                <p
-                                    class="block font-sans text-base font-light leading-relaxed text-inherit text-blue-gray-500 antialiased">
-                                <div class="w-96">
+                            <div class="w-2/3">
+                                <div class="w-full">
                                     <div class="relative w-full min-w-[200px]">
                                         <textarea disabled id="txtJson"
                                             class="peer h-full min-h-[100px] w-full resize-none rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:resize-none disabled:border-0 disabled:bg-blue-gray-50"
@@ -169,7 +177,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                </p>
+
                             </div>
                             <div>
                                 <button onclick="importBookmarks()" disabled id="btnImport"

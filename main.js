@@ -5,6 +5,8 @@ jQuery(document).ready(() => {
 
     const fileSelect = document.getElementById("fileSelect"),
         fileElem = document.getElementById("fileElem"),
+        buttonRewind = document.getElementById("btnRewind"),
+        buttonForward = document.getElementById("btnForward"),
         fileList = document.getElementById("fileList");
 
     fileSelect.addEventListener("click", function (e) {
@@ -15,6 +17,24 @@ jQuery(document).ready(() => {
     }, false);
 
     fileElem.addEventListener("change", handleFiles, false);
+
+    buttonRewind.addEventListener("click", function (e) {
+        let audio = document.getElementById("audioPlayer");
+        if (audio) {
+            audio.play();
+            
+            audio.currentTime = audio.currentTime > 30 ? audio.currentTime - 30 : 0;
+        }
+    }, false);
+
+    buttonForward.addEventListener("click", function (e) {
+        let audio = document.getElementById("audioPlayer");
+        if (audio) {
+            audio.play();
+            
+            audio.currentTime = audio.currentTime > 0 ? audio.currentTime + 30 : 30;
+        }
+    }, false);
 
     function handleFiles() {
         if (!this.files.length) {
@@ -39,6 +59,8 @@ jQuery(document).ready(() => {
             $("#btnExport").prop("disabled", "");
             $("#txtJson").prop("disabled", "");
             $("#btnImport").prop("disabled", "");
+            $("#btnRewind").prop("disabled", "");
+            $("#btnForward").prop("disabled", "");
         }
     }
 
